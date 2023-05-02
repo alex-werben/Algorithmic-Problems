@@ -70,7 +70,6 @@ class A_star:
         i = 8
         while not self.open.empty():
             node = self.open.get()
-            print(self.open.qsize())
             if node.h_x == i:
                 with open(f'{i}.txt', "w") as fp:
                     print_solution_to_file(fp, node)

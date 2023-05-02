@@ -1,16 +1,18 @@
 from queue import PriorityQueue
 import numpy as np
+
+
 class Node:
     # right, bottom, left, up
     moves = ((0, 1), (1, 0), (0, -1), (-1, 0))
+
     def __init__(self, matrix_, goal_state_, parent_=None):
-        self.matrix = matrix_ # matrix - current state
+        self.matrix = matrix_  # matrix - current state
         self.h_x = 0
         self.g_x = 0
         self.f_x = 0
         self.parent = parent_
         self.calculate_cost(goal_state_)
-
 
     def __lt__(self, other):
         if self.f_x < other.f_x:
@@ -50,6 +52,7 @@ class Node:
                 new_matrix[zero_i + move[0]][zero_j + move[1]] = 0
                 children.append(new_matrix)
         return children
+
 
 class A_star:
     def __init__(self, init_state_, goal_state_):
@@ -93,10 +96,9 @@ def print_solution_to_file(fp, goal_node):
     while stack:
         node = stack.pop(len(stack) - 1)
         fp.write(np.array2string(node.matrix))
-        # print(node.matrix)
         if len(stack) > 0:
             fp.write("\n    V\n")
-        # print(" V")
+
 
 def print_solution(goal_node: Node):
     stack = []
@@ -108,6 +110,7 @@ def print_solution(goal_node: Node):
         print(node.matrix)
         if len(stack) > 0:
             print(" V")
+
 
 if __name__ == "__main__":
     init_state = np.array([[7, 5, 6],

@@ -1,5 +1,4 @@
-# 8 puzzle problem
-# A* algorithm
+# Solution for 8 puzzle problem using A* algorithm
 
 
 ## Idea:

@@ -44,11 +44,6 @@ class Node:
         children = []
         for move in Node.moves:
             # check if movement doesn't cross board border
-            # if self.matrix[zero_i + move[0]][zero_j + move[1]] is not None:
-            if zero_i == 1 and zero_j == 0 and move[0] == 1 and move[1] == 0:
-                continue
-            if zero_i == 2 and zero_j == 0 and move[0] == -1 and move[1] == 0:
-                continue
             if 0 <= zero_i + move[0] < 3 and 0 <= zero_j + move[1] < 3:
                 new_matrix = np.copy(self.matrix)
                 new_matrix[zero_i][zero_j] = self.matrix[zero_i + move[0]][zero_j + move[1]]
